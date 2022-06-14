@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Concert One", cursive;
+  color: rgb(30, 28, 28);
+}
+
+body,
+html {
+  min-height: 100%;
+  overflow: visible;
+}
+
+#container-all {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#container-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: 100vw;
+  background-color: #e4000f;
+  color: rgb(240, 232, 232);
+  gap: 2rem;
+}
+#info-app-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 5px;
+  font-size: clamp(0.5rem, 5vw, 2rem);
+  color: rgba(30, 28, 28, 0.5);
+}
+
+#pokemon-search-autocomplete {
+  position: absolute;
+  z-index: 1;
+  top: 10vh;
+  margin-left: 20px;
+  max-height: 200px;
+  width: 150px;
+  background-color: rgba(199, 182, 182, 0.5);
+  list-style-type: none;
+  overflow-y: scroll;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.auto-search-suggestion {
+  padding-top: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+}
+
+.auto-search-suggestion:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+#container-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  min-width: 100vw;
+  background-image: linear-gradient(to right, #f08030, #a890f0);
+}
+
+#info-pokeball {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  height: 80%;
+}
+
+#info-pokeball-top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 47%;
+  /* background-color: rgba(154, 51, 51, 0.5); */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0.5em;
+  overflow: hidden;
+}
+
+#info-pokeball-top-shiny-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.2em;
+  background-color: rgba(251, 233, 233, 0.5);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#info-pokeball-top-basic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2em;
+  height: 100%;
+}
+
+#info-pokeball-top-basic-img {
+  height: 150px;
+  width: 150px;
+}
+
+#info-pokeball-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  background-color: transparent;
+  font-size: clamp(2rem, 20vw, 8rem);
+  color: rgba(251, 233, 233, 0.5);
+}
+
+#info-pokeball-bottom {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  min-height: 112px;
+  background-color: rgba(251, 233, 233, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 0.5em;
+}
+
+#info-pokeball-bottom-evo-container {
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+  overflow: scroll;
+}
+
+#info-pokeball-bottom-evo-toggle,
+#info-pokeball-bottom-moves-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.2em;
+  background-color: rgba(251, 233, 233, 0.5);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#info-pokeball-bottom-moves-list {
+  list-style: none;
+  overflow: scroll;
+}
+
+#info-pokeball-bottom-moves-list > li {
+  list-style: none;
+  padding-top: 0.2em;
+  display: inline-block;
+  padding-right: 20px;
+}
+
+#info-pokeball-bottom-evo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#pokemon-search-input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid black;
+  outline: 0;
+  color: rgb(30, 28, 28);
+  margin-bottom: 2px;
+}
+
+::placeholder {
+  color: rgba(251, 233, 233, 0.5);
+}
+
+#info-pokeball-bottom-moves {
+  height: 100%;
+  width: 100%;
+  padding-left: 2em;
+}
