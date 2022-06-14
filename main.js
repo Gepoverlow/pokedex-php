@@ -69,219 +69,219 @@ const lightColors = [
   "#F1CACE", //light fairy
 ];
 
-class Pokedex {
-  constructor() {
-    this.allPokemonNames = [];
-    this.filteredPokemons = [];
-    this.offset = 0;
-  }
+// class Pokedex {
+//   constructor() {
+//     this.allPokemonNames = [];
+//     this.filteredPokemons = [];
+//     this.offset = 0;
+//   }
 
-  init() {
-    this.currentPokemon = [];
-  }
+//   init() {
+//     this.currentPokemon = [];
+//   }
 
-  createPokemon(response) {
-    this.pokemon = new Pokemon(response);
-    this.currentPokemon.push(this.pokemon);
+//   createPokemon(response) {
+//     this.pokemon = new Pokemon(response);
+//     this.currentPokemon.push(this.pokemon);
 
-    this.handleBackground(this.pokemon.types);
-    this.handleDomMainInfo(this.pokemon);
-    this.handleDomMovesInfo(this.pokemon);
-    this.handleDomIdInfo(this.pokemon);
-  }
+//     this.handleBackground(this.pokemon.types);
+//     this.handleDomMainInfo(this.pokemon);
+//     this.handleDomMovesInfo(this.pokemon);
+//     this.handleDomIdInfo(this.pokemon);
+//   }
 
-  handleBackground(typing) {
-    let gradientBg;
+//   handleBackground(typing) {
+//     let gradientBg;
 
-    if (typing.length === 2) {
-      let indexOne = types.indexOf(typing[0]);
-      let primaryColor = colors[indexOne];
+//     if (typing.length === 2) {
+//       let indexOne = types.indexOf(typing[0]);
+//       let primaryColor = colors[indexOne];
 
-      let indexTwo = types.indexOf(typing[1]);
-      let secondaryColor = colors[indexTwo];
+//       let indexTwo = types.indexOf(typing[1]);
+//       let secondaryColor = colors[indexTwo];
 
-      gradientBg = `linear-gradient(to right, ${primaryColor}, ${secondaryColor})`;
-    } else {
-      let indexOne = types.indexOf(typing[0]);
-      let primaryColor = colors[indexOne];
+//       gradientBg = `linear-gradient(to right, ${primaryColor}, ${secondaryColor})`;
+//     } else {
+//       let indexOne = types.indexOf(typing[0]);
+//       let primaryColor = colors[indexOne];
 
-      let secondaryColor = lightColors[indexOne];
-      gradientBg = `linear-gradient(to right, ${primaryColor}, ${secondaryColor})`;
-    }
+//       let secondaryColor = lightColors[indexOne];
+//       gradientBg = `linear-gradient(to right, ${primaryColor}, ${secondaryColor})`;
+//     }
 
-    containerInfo.style.backgroundImage = gradientBg;
-  }
+//     containerInfo.style.backgroundImage = gradientBg;
+//   }
 
-  emptyNode(parent) {
-    while (parent.firstChild) {
-      parent.firstChild.remove();
-    }
-  }
+//   emptyNode(parent) {
+//     while (parent.firstChild) {
+//       parent.firstChild.remove();
+//     }
+//   }
 
-  handleDomMainInfo(pokemon) {
-    this.emptyNode(containerPokeballTop);
-    const basicInfoContainer = document.createElement("div");
-    const pokemonName = document.createElement("h1");
-    const pokemonSprite = document.createElement("img");
-    const pokemonType = document.createElement("h3");
+//   handleDomMainInfo(pokemon) {
+//     this.emptyNode(containerPokeballTop);
+//     const basicInfoContainer = document.createElement("div");
+//     const pokemonName = document.createElement("h1");
+//     const pokemonSprite = document.createElement("img");
+//     const pokemonType = document.createElement("h3");
 
-    const shinySpan = document.createElement("span");
+//     const shinySpan = document.createElement("span");
 
-    pokemonName.textContent = pokemon.name;
-    pokemonSprite.src = pokemon.sprite;
-    pokemonType.textContent =
-      pokemon.types.length > 1
-        ? `${pokemon.types[0]} / ${pokemon.types[1]}`
-        : `${pokemon.types[0]}`;
-    shinySpan.textContent = "Toggle Shiny";
+//     pokemonName.textContent = pokemon.name;
+//     pokemonSprite.src = pokemon.sprite;
+//     pokemonType.textContent =
+//       pokemon.types.length > 1
+//         ? `${pokemon.types[0]} / ${pokemon.types[1]}`
+//         : `${pokemon.types[0]}`;
+//     shinySpan.textContent = "Toggle Shiny";
 
-    basicInfoContainer.id = "info-pokeball-top-basic";
-    pokemonName.id = "info-pokeball-top-basic-name";
-    pokemonSprite.id = "info-pokeball-top-basic-img";
-    pokemonType.id = "info-pokeball-top-basic-type";
-    shinySpan.id = "info-pokeball-top-shiny-toggle";
+//     basicInfoContainer.id = "info-pokeball-top-basic";
+//     pokemonName.id = "info-pokeball-top-basic-name";
+//     pokemonSprite.id = "info-pokeball-top-basic-img";
+//     pokemonType.id = "info-pokeball-top-basic-type";
+//     shinySpan.id = "info-pokeball-top-shiny-toggle";
 
-    basicInfoContainer.appendChild(pokemonName);
-    basicInfoContainer.appendChild(pokemonSprite);
-    basicInfoContainer.appendChild(pokemonType);
+//     basicInfoContainer.appendChild(pokemonName);
+//     basicInfoContainer.appendChild(pokemonSprite);
+//     basicInfoContainer.appendChild(pokemonType);
 
-    containerPokeballTop.appendChild(shinySpan);
-    containerPokeballTop.appendChild(basicInfoContainer);
-  }
+//     containerPokeballTop.appendChild(shinySpan);
+//     containerPokeballTop.appendChild(basicInfoContainer);
+//   }
 
-  handleDomMovesInfo(pokemon) {
-    this.emptyNode(containerPokeballBottom);
-    const movesInfoContainer = document.createElement("div");
-    const movesTitle = document.createElement("h3");
-    const movesList = document.createElement("ul");
+//   handleDomMovesInfo(pokemon) {
+//     this.emptyNode(containerPokeballBottom);
+//     const movesInfoContainer = document.createElement("div");
+//     const movesTitle = document.createElement("h3");
+//     const movesList = document.createElement("ul");
 
-    const evoSpan = document.createElement("span");
+//     const evoSpan = document.createElement("span");
 
-    for (let i = 0; i < pokemon.moves.length; i++) {
-      const movesListItem = document.createElement("li");
-      movesListItem.textContent = pokemon.moves[i];
-      movesList.appendChild(movesListItem);
-    }
+//     for (let i = 0; i < pokemon.moves.length; i++) {
+//       const movesListItem = document.createElement("li");
+//       movesListItem.textContent = pokemon.moves[i];
+//       movesList.appendChild(movesListItem);
+//     }
 
-    movesTitle.textContent = "Moves:";
-    evoSpan.textContent = "See Evo";
+//     movesTitle.textContent = "Moves:";
+//     evoSpan.textContent = "See Evo";
 
-    movesInfoContainer.id = "info-pokeball-bottom-moves";
-    movesTitle.id = "info-pokeball-bottom-moves-title";
-    movesList.id = "info-pokeball-bottom-moves-list";
-    evoSpan.id = "info-pokeball-bottom-evo-toggle";
+//     movesInfoContainer.id = "info-pokeball-bottom-moves";
+//     movesTitle.id = "info-pokeball-bottom-moves-title";
+//     movesList.id = "info-pokeball-bottom-moves-list";
+//     evoSpan.id = "info-pokeball-bottom-evo-toggle";
 
-    movesInfoContainer.appendChild(movesTitle);
-    movesInfoContainer.appendChild(movesList);
+//     movesInfoContainer.appendChild(movesTitle);
+//     movesInfoContainer.appendChild(movesList);
 
-    containerPokeballBottom.appendChild(evoSpan);
-    containerPokeballBottom.appendChild(movesInfoContainer);
-  }
+//     containerPokeballBottom.appendChild(evoSpan);
+//     containerPokeballBottom.appendChild(movesInfoContainer);
+//   }
 
-  handleDomIdInfo(pokemon) {
-    containerPokeballId.textContent = pokemon.id;
-  }
+//   handleDomIdInfo(pokemon) {
+//     containerPokeballId.textContent = pokemon.id;
+//   }
 
-  handleShinyToggle(currentPokemon) {
-    if (currentPokemon[0].isShiny === false) {
-      document.getElementById("info-pokeball-top-basic-img").src = this.pokemon.shinySprite;
+//   handleShinyToggle(currentPokemon) {
+//     if (currentPokemon[0].isShiny === false) {
+//       document.getElementById("info-pokeball-top-basic-img").src = this.pokemon.shinySprite;
 
-      currentPokemon[0].isShiny = true;
-    } else {
-      document.getElementById("info-pokeball-top-basic-img").src = this.pokemon.sprite;
-      currentPokemon[0].isShiny = false;
-    }
-  }
+//       currentPokemon[0].isShiny = true;
+//     } else {
+//       document.getElementById("info-pokeball-top-basic-img").src = this.pokemon.sprite;
+//       currentPokemon[0].isShiny = false;
+//     }
+//   }
 
-  handlePokemonNotFound() {
-    this.emptyNode(containerPokeballTop);
-    this.emptyNode(containerPokeballId);
-    this.emptyNode(containerPokeballBottom);
-    const errorMessage = document.createElement("h2");
-    errorMessage.textContent = "Pokemon not found :`(";
-    containerPokeballTop.appendChild(errorMessage);
-  }
+//   handlePokemonNotFound() {
+//     this.emptyNode(containerPokeballTop);
+//     this.emptyNode(containerPokeballId);
+//     this.emptyNode(containerPokeballBottom);
+//     const errorMessage = document.createElement("h2");
+//     errorMessage.textContent = "Pokemon not found :`(";
+//     containerPokeballTop.appendChild(errorMessage);
+//   }
 
-  filterPokemons(input) {
-    this.filteredPokemons = this.allPokemonNames.filter((name) => name.includes(input));
-    if (input) {
-      this.displayFilteredPokemons(this.filteredPokemons);
-    } else {
-      this.emptyNode(autoComplete);
-    }
-  }
+//   filterPokemons(input) {
+//     this.filteredPokemons = this.allPokemonNames.filter((name) => name.includes(input));
+//     if (input) {
+//       this.displayFilteredPokemons(this.filteredPokemons);
+//     } else {
+//       this.emptyNode(autoComplete);
+//     }
+//   }
 
-  displayFilteredPokemons(filteredArray) {
-    this.emptyNode(autoComplete);
+//   displayFilteredPokemons(filteredArray) {
+//     this.emptyNode(autoComplete);
 
-    for (let i = 0; i < filteredArray.length; i++) {
-      const li = document.createElement("li");
-      li.textContent = filteredArray[i];
-      li.className = "auto-search-suggestion";
-      autoComplete.appendChild(li);
-    }
-  }
-}
+//     for (let i = 0; i < filteredArray.length; i++) {
+//       const li = document.createElement("li");
+//       li.textContent = filteredArray[i];
+//       li.className = "auto-search-suggestion";
+//       autoComplete.appendChild(li);
+//     }
+//   }
+// }
 
-class Pokemon {
-  constructor(response) {
-    this.id = this.handleIdFormatting(response.id);
-    this.name = this.handleCapitalizedName(response.name);
-    this.speciesUrl = response.species.url;
-    this.sprite = response.sprites.front_default;
-    this.shinySprite = response.sprites.front_shiny;
-    this.moves = this.handleMoves(response);
-    this.types = this.handleTypes(response);
-    this.isShiny = false;
-    this.evolutionLine = [];
-    this.isFavorite = false;
-  }
+// class Pokemon {
+//   constructor(response) {
+//     this.id = this.handleIdFormatting(response.id);
+//     this.name = this.handleCapitalizedName(response.name);
+//     this.speciesUrl = response.species.url;
+//     this.sprite = response.sprites.front_default;
+//     this.shinySprite = response.sprites.front_shiny;
+//     this.moves = this.handleMoves(response);
+//     this.types = this.handleTypes(response);
+//     this.isShiny = false;
+//     this.evolutionLine = [];
+//     this.isFavorite = false;
+//   }
 
-  handleMoves(response) {
-    const moves = [];
+//   handleMoves(response) {
+//     const moves = [];
 
-    if (response.moves.length === 0) {
-      console.log("moves not found"); //
-    } else if (response.moves.length === 1) {
-      moves.push(response.moves[0].move.name);
-    } else {
-      for (let i = 0; i < 4; i++) {
-        moves.push(response.moves[i].move.name);
-      }
-    }
-    return moves;
-  }
+//     if (response.moves.length === 0) {
+//       console.log("moves not found"); //
+//     } else if (response.moves.length === 1) {
+//       moves.push(response.moves[0].move.name);
+//     } else {
+//       for (let i = 0; i < 4; i++) {
+//         moves.push(response.moves[i].move.name);
+//       }
+//     }
+//     return moves;
+//   }
 
-  handleTypes(response) {
-    const types = [];
-    for (let i = 0; i < response.types.length; i++) {
-      types.push(response.types[i].type.name);
-    }
-    return types;
-  }
+//   handleTypes(response) {
+//     const types = [];
+//     for (let i = 0; i < response.types.length; i++) {
+//       types.push(response.types[i].type.name);
+//     }
+//     return types;
+//   }
 
-  handleCapitalizedName(name) {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  }
+//   handleCapitalizedName(name) {
+//     return name.charAt(0).toUpperCase() + name.slice(1);
+//   }
 
-  handleIdFormatting(id) {
-    if (id > 0 && id < 10) {
-      return `#00${id}`;
-    } else if (id >= 10 && id < 100) {
-      return `#0${id}`;
-    } else {
-      return `#${id}`;
-    }
-  }
+//   handleIdFormatting(id) {
+//     if (id > 0 && id < 10) {
+//       return `#00${id}`;
+//     } else if (id >= 10 && id < 100) {
+//       return `#0${id}`;
+//     } else {
+//       return `#${id}`;
+//     }
+//   }
 
-  handleFavorite() {
-    if (!this.isFavorite) {
-      this.isFavorite = true;
-    } else if (this.isFavorite) {
-      this.isFavorite = false;
-    }
-  }
-}
+//   handleFavorite() {
+//     if (!this.isFavorite) {
+//       this.isFavorite = true;
+//     } else if (this.isFavorite) {
+//       this.isFavorite = false;
+//     }
+//   }
+// }
 
 const searchInput = document.getElementById("pokemon-search-input");
 const searchPokemon = document.getElementById("pokemon-search-button");

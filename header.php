@@ -16,26 +16,10 @@
   <body>
     <div id="container-all">
       <div id="container-search">
-        <form id="pokemon-search-form" action="" autocomplete="off">
+        <form id="pokemon-search-form" action="includes/getPokemon.inc.php" autocomplete="off" method="get">
           <label for="pokemon-search-input">Search</label>
-          <input id="pokemon-search-input" type="text" placeholder="Name or Id" />
-          <button id="pokemon-search-button" type="submit">Search!</button>
+          <input id="pokemon-search-input" type="text" placeholder="Name or Id" name="pokemonid" />
+          <button id="pokemon-search-button" type="submit" name="submit">Search!</button>
         </form>
         <div id="pokemon-search-autocomplete"></div>
       </div>
-      <div id="container-info">
-        <div id="info-app-name">GPokedex</div>
-        <div id="info-pokeball-id"></div>
-        <div id="info-pokeball">
-          <div id="info-pokeball-top"></div>
-
-          <div id="info-pokeball-bottom">
-            <h1>Start Looking for Pokemons!</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="main.js"></script>
-  </body>
-</html>
