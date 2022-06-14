@@ -16,7 +16,7 @@
   <body>
     <div id="container-all">
       <div id="container-search">
-        <form id="pokemon-search-form" action="includes/getPokemon.inc.php" autocomplete="off" method="get">
+        <form id="pokemon-search-form" action="getPokemon.php" autocomplete="off" method="get">
           <label for="pokemon-search-input">Search</label>
           <input id="pokemon-search-input" type="text" placeholder="Name or Id" name="pokemonid" />
           <button id="pokemon-search-button" type="submit" name="submit">Search!</button>

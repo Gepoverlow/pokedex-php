@@ -1,6 +1,6 @@
 <?php
 
-$types = [
+ $types = [
     "normal",
     "fire",
     "water",
@@ -20,6 +20,7 @@ $types = [
     "steel",
     "fairy",
   ];
+
   
   $colors = [
     "#A8A878", //normal
@@ -79,36 +80,37 @@ class Pokedex {
   function createPokemon($response) {
     $this->pokemon = new Pokemon($response);
 //    $this->currentPokemon.push($this->pokemon);
-    array_push($this->currentPokemon, $this->pokemon);
+    // array_push($this->currentPokemon, $this->pokemon);
+    $this->currentPokemon[] = $this->pokemon; 
 
     $this->handleBackground($this->pokemon->types);
-    $this->handleDomMainInfo($this->pokemon);
-    $this->handleDomMovesInfo($this->pokemon);
-    $this->handleDomIdInfo($this->pokemon);
   }
 
  function handleBackground($typing) {
     $gradientBg;
 
+    global $types, $colors, $lightColors;
+
     // if ($typing.length === 2) {
         if (count($typing) === 2) {
     //   $indexOne = types.indexOf($typing[0]);
-    $indexOne = strpos($types, $typing[0]);
+    $indexOne = array_search($typing[0], $types);
       $primaryColor = $colors[$indexOne];
 
     //   $indexTwo = types.indexOf($typing[1]);
-    $indexTwo = strpos($types, $typing[1]);
+    $indexTwo = array_search($typing[1], $types);
       $secondaryColor = $colors[$indexTwo];
 
       $gradientBg = `linear-gradient(to right, {$primaryColor}, {$secondaryColor})`;
     } else {
     //   $indexOne = types.indexOf($typing[0]);
-    $indexOne = strpos($types, $typing[0]);
+    $indexOne = array_search($typing[0], $types);
       $primaryColor = $colors[$indexOne];
 
       $secondaryColor = $lightColors[$indexOne];
       $gradientBg = `linear-gradient(to right, {$primaryColor}, {$secondaryColor})`;
     }
+
 
     echo `<style type="text/css">
         #container-info {
