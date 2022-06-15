@@ -5,7 +5,11 @@ $name = $_GET["pokemonid"];
 if(isset($_GET["submit"])) {
     include "includes/functions.inc.php";
 
-$pokedex = getPokemon($name);
+
+    
+$pokedex = @getPokemon($name);
+
+if(!$pokedex) return;
 
 $pokemon = $pokedex->pokemon;
 

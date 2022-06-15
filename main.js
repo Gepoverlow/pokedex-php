@@ -290,25 +290,25 @@ const containerSuggestions = document.getElementById("pokemon-search-autocomplet
 const pokedex = new Pokedex();
 
 //Event Listeners
-searchPokemon.addEventListener("click", (e) => {
-  e.preventDefault();
+// searchPokemon.addEventListener("click", (e) => {
+//   e.preventDefault();
 
-  let searchValue = document.getElementById("pokemon-search-input").value;
-  let trimmedSearch = searchValue.trim().toLowerCase();
+//   let searchValue = document.getElementById("pokemon-search-input").value;
+//   let trimmedSearch = searchValue.trim().toLowerCase();
 
-  if (trimmedSearch.length !== 0) {
-    pokedex.init();
-    searchInput.value = "";
-    getPokemon(trimmedSearch);
-  }
-});
+//   if (trimmedSearch.length !== 0) {
+//     pokedex.init();
+//     searchInput.value = "";
+//     getPokemon(trimmedSearch);
+//   }
+// });
 
-searchInput.addEventListener("keyup", () => {
-  let searchInputValue = searchInput.value;
-  let tailoredInputValue = searchInputValue.trim().toLowerCase();
+// searchInput.addEventListener("keyup", () => {
+//   let searchInputValue = searchInput.value;
+//   let tailoredInputValue = searchInputValue.trim().toLowerCase();
 
-  pokedex.filterPokemons(tailoredInputValue);
-});
+//   pokedex.filterPokemons(tailoredInputValue);
+// });
 
 //Event Delegation
 
@@ -343,16 +343,16 @@ document.addEventListener("click", (e) => {
 
 //Async Code
 
-async function getPokemon(identifier) {
-  const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}`);
-  if (data.status === 404) {
-    pokedex.handlePokemonNotFound();
-  } else {
-    const response = await data.json();
+// async function getPokemon(identifier) {
+//   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}`);
+//   if (data.status === 404) {
+//     pokedex.handlePokemonNotFound();
+//   } else {
+//     const response = await data.json();
 
-    pokedex.createPokemon(response);
-  }
-}
+//     pokedex.createPokemon(response);
+//   }
+// }
 
 async function getEvolutionData(identifier) {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}`);
@@ -444,18 +444,18 @@ function removeDuplicateObjects(array) {
   return [...new Set(array.map((s) => JSON.stringify(s)))].map((s) => JSON.parse(s));
 }
 
-async function getPokemonNames(offset) {
-  const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=200&offset=${offset}`);
-  const response = await data.json();
+// async function getPokemonNames(offset) {
+//   const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=200&offset=${offset}`);
+//   const response = await data.json();
 
-  response.results.forEach((result) => {
-    pokedex.allPokemonNames.push(result.name);
-  });
-  pokedex.offset += 200;
+//   response.results.forEach((result) => {
+//     pokedex.allPokemonNames.push(result.name);
+//   });
+//   pokedex.offset += 200;
 
-  if (pokedex.offset >= 1200) return;
-  setTimeout(() => {
-    getPokemonNames(pokedex.offset);
-  }, 1000);
-}
-getPokemonNames(pokedex.offset);
+//   if (pokedex.offset >= 1200) return;
+//   setTimeout(() => {
+//     getPokemonNames(pokedex.offset);
+//   }, 1000);
+// }
+// getPokemonNames(pokedex.offset);
