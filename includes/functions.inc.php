@@ -59,11 +59,11 @@ function handleError(){
   <div id=info-pokeball-id></div>
   <div id=info-pokeball>
     <div id=info-pokeball-top>
-    <span id=info-pokeball-top-shiny-toggle>Toggle Shiny</span>
+  
     <div id=info-pokeball-top-basic>
     </div></div>
     <div id=info-pokeball-bottom>
-    <span id=info-pokeball-bottom-evo-toggle>See Evo</span>
+    
     <div id=info-pokeball-bottom-moves>
     <h3 id=info-pokeball-bottom-moves-title>Pokemon not found</h3>
     </div>
