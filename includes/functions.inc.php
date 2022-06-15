@@ -13,7 +13,7 @@ function getPokemon($id){
    return $pokedex;
 }
 
-function displayPokemon($name, $sprite, $id, $typesString){
+function displayPokemon($name, $sprite, $id, $typesString, $moves){
 
 include_once "header.php";
 
@@ -33,6 +33,13 @@ echo "<div id=container-info>
   </div></div>
 
   <div id=info-pokeball-bottom>
+  <span id=info-pokeball-bottom-evo-toggle>See Evo</span>
+  <div id=info-pokeball-bottom-moves>
+  <h3 id=info-pokeball-bottom-moves-title>Moves:</h3>
+  <ul id=info-pokeball-bottom-moves-list> 
+  $moves
+  </ul>
+  </div>
   </div>
 </div>
 </div>
@@ -42,5 +49,14 @@ echo "<div id=container-info>
 </body>
 </html>";
  
-    
+}
+
+function createLisFromMoves($moves){
+$arrayOfMoves = [];
+
+  for($i = 0; $i < count($moves) && $i < 4 ; $i++){
+    array_push($arrayOfMoves, "<li>" . $moves[$i] . "</li>");
+  }
+
+  return $arrayOfMoves;
 }

@@ -6,9 +6,13 @@ if(isset($_GET["submit"])) {
     include "includes/functions.inc.php";
 
 $pokedex = getPokemon($name);
+
 $pokemon = $pokedex->pokemon;
 
- displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->typesString);
+$pokemonMoves = createLisFromMoves($pokemon->moves);
+$implodedMoves = implode("", $pokemonMoves);
+
+ displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->typesString, $implodedMoves);
 
  $pokedex->handleBackground($pokedex->pokemon->types);
 }

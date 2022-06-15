@@ -102,8 +102,6 @@ class Pokedex {
       $gradientBg = "linear-gradient(to right, " . $primaryColor . ", " . $secondaryColor . ");";
     }
 
-    print_r($gradientBg);
-
 
     // echo "<style type=text/css> #container-info { background-image: " . $gradientBg . "} </style>";
     echo "<style> #container-info { background-image: $gradientBg } </style>";
