@@ -125,8 +125,8 @@ class Pokedex {
 class Pokemon {
    function __construct($response) {
     //   $this->id = $this->handleIdFormatting($response->id);
-      $this->id = ucfirst($response->id);
-      $this->name = $response->name;
+      $this->id = $this->handleIdFormatting($response->id);
+      $this->name = ucfirst($response->name);
       $this->speciesUrl = $response->species->url;
       $this->sprite = $response->sprites->front_default;
       $this->shinySprite = $response->sprites->front_shiny;
@@ -180,14 +180,15 @@ class Pokemon {
     // }
   
    function handleIdFormatting($id) {
-$idNumber;
+
+  $idNumber = "";
 
       if ($id > 0 && $id < 10) {
-        $idNumber = `#00{$id}`;
+        $idNumber = "#00" . $id;
       } else if ($id >= 10 && $id < 100) {
-        $idNumber = `#0{$id}`;
+        $idNumber = "#0" . $id;
       } else {
-        $idNumber = `#{$id}`;
+        $idNumber = "#" . $id;
       }
 
       return $idNumber;

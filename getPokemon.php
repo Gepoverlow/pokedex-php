@@ -8,6 +8,8 @@ if(isset($_GET["submit"])) {
 $pokedex = getPokemon($name);
 $pokemon = $pokedex->currentPokemon[0];
 
+$pokedex->handleBackground($pokemon->types);
+
 
 
  displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->typesString);
