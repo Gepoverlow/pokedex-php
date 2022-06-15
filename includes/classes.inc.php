@@ -66,32 +66,21 @@
 
 class Pokedex {
 
-
   function __construct() {
     $this->allPokemonNames = [];
     $this->filteredPokemons = [];
     $this->offset = 0;
   }
 
-  function init() {
-    $this->currentPokemon = [];
-  }
-
   function createPokemon($response) {
     $this->pokemon = new Pokemon($response);
-//    $this->currentPokemon.push($this->pokemon);
-    // array_push($this->currentPokemon, $this->pokemon);
-    $this->currentPokemon[] = $this->pokemon; 
-
     $this->handleBackground($this->pokemon->types);
   }
 
  function handleBackground($typing) {
-    $gradientBg;
+    $gradientBg = "a";
 
     global $types, $colors, $lightColors;
-
-
 
     // if ($typing.length === 2) {
         if (count($typing) === 2) {
@@ -103,28 +92,26 @@ class Pokedex {
     $indexTwo = array_search($typing[1], $types);
       $secondaryColor = $colors[$indexTwo];
 
-      $gradientBg = `linear-gradient(to right, {$primaryColor}, {$secondaryColor})`;
+      $gradientBg = "linear-gradient(to right, " . $primaryColor . ", " . $secondaryColor . ");";
     } else {
     //   $indexOne = types.indexOf($typing[0]);
     $indexOne = array_search($typing[0], $types);
       $primaryColor = $colors[$indexOne];
 
       $secondaryColor = $lightColors[$indexOne];
-      $gradientBg = `linear-gradient(to right, {$primaryColor}, {$secondaryColor})`;
+      $gradientBg = "linear-gradient(to right, " . $primaryColor . ", " . $secondaryColor . ");";
     }
 
+    print_r($gradientBg);
 
-    echo `<style type="text/css">
-        #container-info {
-            background-image: {$gradientBg};
+
+    // echo "<style type=text/css> #container-info { background-image: " . $gradientBg . "} </style>";
+    echo "<style type=text/css> #container-info { background-image: red } </style>";
         }
-        </style>`;
-  }
 }
 
 class Pokemon {
    function __construct($response) {
-    //   $this->id = $this->handleIdFormatting($response->id);
       $this->id = $this->handleIdFormatting($response->id);
       $this->name = ucfirst($response->name);
       $this->speciesUrl = $response->species->url;
