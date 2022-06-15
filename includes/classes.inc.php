@@ -74,11 +74,11 @@ class Pokedex {
 
   function createPokemon($response) {
     $this->pokemon = new Pokemon($response);
-    $this->handleBackground($this->pokemon->types);
+    // $this->handleBackground($this->pokemon->types);
   }
 
  function handleBackground($typing) {
-    $gradientBg = "a";
+    $gradientBg = "";
 
     global $types, $colors, $lightColors;
 
@@ -106,7 +106,7 @@ class Pokedex {
 
 
     // echo "<style type=text/css> #container-info { background-image: " . $gradientBg . "} </style>";
-    echo "<style type=text/css> #container-info { background-image: red } </style>";
+    echo "<style> #container-info { background-image: $gradientBg } </style>";
         }
 }
 

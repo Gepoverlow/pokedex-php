@@ -9,6 +9,8 @@ $pokedex = getPokemon($name);
 $pokemon = $pokedex->pokemon;
 
  displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->typesString);
+
+ $pokedex->handleBackground($pokedex->pokemon->types);
 }
     
 
