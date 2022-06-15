@@ -13,21 +13,22 @@ function getPokemon($id){
    return $pokedex;
 }
 
-function displayPokemon($name, $sprite){
+function displayPokemon($name, $sprite, $id, $type){
 
 include_once "header.php";
 
 
 echo "<div id=container-info>
 <div id=info-app-name>GPokedex</div>
-<div id=info-pokeball-id></div>
+<div id=info-pokeball-id>$id</div>
 <div id=info-pokeball>
   <div id=info-pokeball-top>
+  <span id=info-pokeball-top-shiny-toggle>Toggle Shiny</span>
   <div id=info-pokeball-top-basic>
     
   <h1 id=info-pokeball-top-basic-name>$name</h1>
   <img id=info-pokeball-top-basic-img src=$sprite><img>
-  
+  <h3 id=info-pokeball-top-basic-type>$type</h3>
   
   </div></div>
 
@@ -40,8 +41,6 @@ echo "<div id=container-info>
 <!-- <script src=main.js></script> -->
 </body>
 </html>";
-
-   
-    
+ 
     
 }

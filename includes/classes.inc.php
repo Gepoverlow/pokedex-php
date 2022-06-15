@@ -157,7 +157,17 @@ class Pokemon {
         // types.push($response.types[i].type.name);
         array_push($types, $response->types[$i]->type->name);
       }
-      return $types;
+
+      $typeString = "";
+      
+    if(count($types) > 1 ){
+      $typeString = $types[0] . " / " . $types[1];
+    } else {
+      $typeString = $types[0];
+    }
+
+    return $typeString;
+
     }
   
     // handleCapitalizedName(name) {

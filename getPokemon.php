@@ -10,7 +10,7 @@ $pokemon = $pokedex->currentPokemon[0];
 
 
 
- displayPokemon($pokemon->name, $pokemon->sprite);
+ displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->types);
 }
     
 
