@@ -13,7 +13,7 @@ function getPokemon($id){
    return $pokedex;
 }
 
-function displayPokemon($name, $sprite, $id, $type){
+function displayPokemon($name, $sprite, $id, $typesString){
 
 include_once "header.php";
 
@@ -28,7 +28,7 @@ echo "<div id=container-info>
     
   <h1 id=info-pokeball-top-basic-name>$name</h1>
   <img id=info-pokeball-top-basic-img src=$sprite><img>
-  <h3 id=info-pokeball-top-basic-type>$type</h3>
+  <h3 id=info-pokeball-top-basic-type>$typesString</h3>
   
   </div></div>
 

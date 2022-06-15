@@ -91,6 +91,8 @@ class Pokedex {
 
     global $types, $colors, $lightColors;
 
+
+
     // if ($typing.length === 2) {
         if (count($typing) === 2) {
     //   $indexOne = types.indexOf($typing[0]);
@@ -123,13 +125,14 @@ class Pokedex {
 class Pokemon {
    function __construct($response) {
     //   $this->id = $this->handleIdFormatting($response->id);
-    $this->id = $response->id;
+      $this->id = ucfirst($response->id);
       $this->name = $response->name;
       $this->speciesUrl = $response->species->url;
       $this->sprite = $response->sprites->front_default;
       $this->shinySprite = $response->sprites->front_shiny;
       $this->moves = $this->handleMoves($response);
       $this->types = $this->handleTypes($response);
+      $this->typesString = $this->handleTypesString($this->types);
       $this->isShiny = false;
       $this->evolutionLine = [];
     }
@@ -158,18 +161,20 @@ class Pokemon {
         array_push($types, $response->types[$i]->type->name);
       }
 
-      $typeString = "";
-      
-    if(count($types) > 1 ){
-      $typeString = $types[0] . " / " . $types[1];
-    } else {
-      $typeString = $types[0];
-    }
+      return $types;
+        }
 
-    return $typeString;
+    function handleTypesString($types){
+          $typeString = "";
 
-    }
-  
+          if(count($types) > 1){
+            $typeString = $types[0] . " / " . $types[1];
+          } else {
+            $typeString = $types[0];
+          }
+          return $typeString;
+          }
+        
     // handleCapitalizedName(name) {
     //   return name.charAt(0).toUpperCase() + name.slice(1);
     // }
