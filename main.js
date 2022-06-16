@@ -354,23 +354,23 @@ document.addEventListener("click", (e) => {
 //   }
 // }
 
-async function getEvolutionData(identifier) {
-  const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}`);
-  if (data.status === 404) return;
-  const response = await data.json();
+// async function getEvolutionData(identifier) {
+//   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}`);
+//   if (data.status === 404) return;
+//   const response = await data.json();
 
-  const evoData = [response.sprites.front_default, response.name];
+//   const evoData = [response.sprites.front_default, response.name];
 
-  return evoData;
-}
+//   return evoData;
+//}
 
-async function getEvolutions(speciesUrl) {
-  const data = await fetch(speciesUrl);
-  const response = await data.json();
+// async function getEvolutions(speciesUrl) {
+//   const data = await fetch(speciesUrl);
+//   const response = await data.json();
 
-  await handleEvolutionData(response.evolution_chain.url);
-  await displayEvolutions();
-}
+//   await handleEvolutionData(response.evolution_chain.url);
+//   await displayEvolutions();
+// }
 
 async function handleEvolutionData(chainUrl) {
   const data = await fetch(chainUrl);

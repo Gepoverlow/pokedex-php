@@ -86,3 +86,78 @@ $arrayOfMoves = [];
 
   return $arrayOfMoves;
 }
+
+function getEvolutionData($identifier) {
+  $data = file_get_contents("https://pokeapi.co/api/v2/pokemon/" . $identifier);
+  $response = json_decode($data);
+  $evoData = [];
+
+  array_push($evoData, $response->sprites->front_default, $response->name);
+
+
+
+  return $evoData;
+}
+
+function getEvolutions($speciesUrl) {
+  $data= file_get_contents($speciesUrl);
+  $response = json_decode($data);
+
+  handleEvolutionData($response->evolution_chain->url);
+  // displayEvolutions();
+}
+
+function handleEvolutionData($chainUrl) {
+  $data = file_get_contents($chainUrl);
+  $response = json_decode($data);
+
+  echo "<pre>";
+
+  
+  $evolutionChain = [];
+  $evoData = $response->chain;
+
+  $baseString = $evoData->species->url;
+
+  $splicedString = substr($baseString, 42, strlen($baseString) - 43);
+
+
+  // do {
+  //   $baseString = $evoData->species->url;
+  //   // $splicedString = baseString.slice(42, baseString.length - 1);
+  //   $splicedString = substr($baseString, 42, strlen($baseString) - 43);
+
+  //   evolutionChain.push({
+  //     name: evoData.species.name,
+  //     id: splicedString,
+  //   });
+
+  //   if (evoData.evolves_to.length > 1) {
+  //     for (let i = 0; i < evoData.evolves_to.length; i++) {
+  //       let baseString = evoData.evolves_to[i].species.url;
+  //       let splicedString = baseString.slice(42, baseString.length - 1);
+
+  //       evolutionChain.push({ name: evoData.evolves_to[i].species.name, id: splicedString });
+
+  //       if (evoData.evolves_to[i].evolves_to.length > 0) {
+  //         let baseStringDupe = evoData.evolves_to[i].evolves_to[0].species.url;
+  //         let splicedStringDupe = baseStringDupe.slice(42, baseString.length - 1);
+
+  //         evolutionChain.push({
+  //           name: evoData.evolves_to[i].evolves_to[0].species.name,
+  //           id: splicedStringDupe,
+  //         });
+  //       }
+  //     }
+  //   }
+
+  //   evoData = evoData["evolves_to"][0];
+  // } while (!!evoData && evoData.hasOwnProperty("evolves_to"));
+
+  // let removedDuplicates = removeDuplicateObjects(evolutionChain);
+  // if (pokedex.currentPokemon[0].evolutionLine.length === 0) {
+  //   removedDuplicates.forEach((evolution) =>
+  //     pokedex.currentPokemon[0].evolutionLine.push(evolution)
+  //   );
+  // }
+}

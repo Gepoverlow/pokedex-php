@@ -19,6 +19,14 @@ $implodedMoves = implode("", $pokemonMoves);
  displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->typesString, $implodedMoves);
 
  $pokedex->handleBackground($pokedex->pokemon->types);
+
+ //evolutions
+$pokemon->evolutionLine = getEvolutionData($name);
+
+
+
+getEvolutions($pokemon->speciesUrl);
+
 }
     
 
