@@ -25,7 +25,7 @@ $pokemon->evolutionLine = getEvolutionData($name);
 
 
 
-getEvolutions($pokemon->speciesUrl);
+// getEvolutions($pokemon->speciesUrl);
 
 }
     

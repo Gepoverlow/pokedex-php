@@ -107,57 +107,57 @@ function getEvolutions($speciesUrl) {
   // displayEvolutions();
 }
 
-function handleEvolutionData($chainUrl) {
-  $data = file_get_contents($chainUrl);
-  $response = json_decode($data);
+// function handleEvolutionData($chainUrl) {
+//   $data = file_get_contents($chainUrl);
+//   $response = json_decode($data);
 
-  echo "<pre>";
+//   echo "<pre>";
 
   
-  $evolutionChain = [];
-  $evoData = $response->chain;
+//   $evolutionChain = [];
+//   $evoData = $response->chain;
 
-  $baseString = $evoData->species->url;
+//   do {
+//     $baseString = $evoData->species->url;
+//     $splicedString = substr($baseString, 42, strlen($baseString) - 43);
 
-  $splicedString = substr($baseString, 42, strlen($baseString) - 43);
+//     // evolutionChain.push({
+//     //   name: evoData.species.name,
+//     //   id: splicedString,
+//     // });
 
+//     $evolutionChain[] = (object) ['name' => $evoData->species->name, 'id' => $splicedString];
 
-  // do {
-  //   $baseString = $evoData->species->url;
-  //   // $splicedString = baseString.slice(42, baseString.length - 1);
-  //   $splicedString = substr($baseString, 42, strlen($baseString) - 43);
+//     if (count($evoData->evolves_to) > 1) {
+//       for ($i = 0; $i < count(evoData.evolves_to); $i++) {
+//         $baseString = $evoData->evolves_to[$i]->species->url;
+//         $splicedString = substr($baseString, 42, strlen($baseString) - 43);
 
-  //   evolutionChain.push({
-  //     name: evoData.species.name,
-  //     id: splicedString,
-  //   });
+//         $evolutionChain[] = (object) ['name' => $evoData->evolves_to[$i]->species->name, 'id' => $splicedString];
 
-  //   if (evoData.evolves_to.length > 1) {
-  //     for (let i = 0; i < evoData.evolves_to.length; i++) {
-  //       let baseString = evoData.evolves_to[i].species.url;
-  //       let splicedString = baseString.slice(42, baseString.length - 1);
+//         if (count($evoData->evolves_to[$i]->evolves_to) > 0) {
+//           $baseStringDupe = $evoData->evolves_to[$i]->evolves_to[0]->species->url;
+//           $splicedStringDupe = substr($baseString, 42, strlen($baseString) - 43);
 
-  //       evolutionChain.push({ name: evoData.evolves_to[i].species.name, id: splicedString });
+//           // evolutionChain.push({
+//           //   name: evoData.evolves_to[i].evolves_to[0].species.name,
+//           //   id: splicedStringDupe,
+//           // });
+//           $evolutionChain[] = (object) ['name' => $evoData->evolves_to[$i]->evolves_to[0]->species->name, 'id' => $splicedString];
+//         }
+//       }
+//     }
 
-  //       if (evoData.evolves_to[i].evolves_to.length > 0) {
-  //         let baseStringDupe = evoData.evolves_to[i].evolves_to[0].species.url;
-  //         let splicedStringDupe = baseStringDupe.slice(42, baseString.length - 1);
+//     $evoData = $evoData["evolves_to"][0];
+//   // } while (!!$evoData && $evoData.hasOwnProperty("evolves_to"));
+// } while (!!$evoData && property_exists($evoData, "evolves_to"));
 
-  //         evolutionChain.push({
-  //           name: evoData.evolves_to[i].evolves_to[0].species.name,
-  //           id: splicedStringDupe,
-  //         });
-  //       }
-  //     }
-  //   }
+// return evolutionChain;
 
-  //   evoData = evoData["evolves_to"][0];
-  // } while (!!evoData && evoData.hasOwnProperty("evolves_to"));
-
-  // let removedDuplicates = removeDuplicateObjects(evolutionChain);
-  // if (pokedex.currentPokemon[0].evolutionLine.length === 0) {
-  //   removedDuplicates.forEach((evolution) =>
-  //     pokedex.currentPokemon[0].evolutionLine.push(evolution)
-  //   );
-  // }
-}
+//   // removedDuplicates = removeDuplicateObjects(evolutionChain);
+//   // if (pokedex.currentPokemon[0].evolutionLine.length === 0) {
+//   //   removedDuplicates.forEach((evolution) =>
+//   //     pokedex.currentPokemon[0].evolutionLine.push(evolution)
+//   //   );
+//   // }
+// }
