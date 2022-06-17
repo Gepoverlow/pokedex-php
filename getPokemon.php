@@ -2,32 +2,36 @@
 
 $name = $_GET["pokemonid"];
 
-if(isset($_GET["submit"])) {
+ if(isset($_GET["submit"])) {
     include "includes/functions.inc.php";
 
 
+  // phpinfo();
     
-$pokedex = @getPokemon($name);
 
-if(!$pokedex) return;
+ $pokedex = @getPokemon($name);
 
-$pokemon = $pokedex->pokemon;
+ if(!$pokedex) return;
 
-$pokemonMoves = createLisFromMoves($pokemon->moves);
-$implodedMoves = implode("", $pokemonMoves);
+ $pokemon = $pokedex->pokemon;
 
- displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->typesString, $implodedMoves);
+ $pokemonMoves = createLisFromMoves($pokemon->moves);
+ $implodedMoves = implode("", $pokemonMoves);
 
- $pokedex->handleBackground($pokedex->pokemon->types);
+  displayPokemon($pokemon->name, $pokemon->sprite, $pokemon->id, $pokemon->typesString, $implodedMoves);
 
- //evolutions
-$pokemon->evolutionLine = getEvolutionData($name);
+  $pokedex->handleBackground($pokedex->pokemon->types);
+
+  //evolutions
+ $pokemon->evolutionLine = getEvolutionData($name);
 
 
 
-// getEvolutions($pokemon->speciesUrl);
+ $pokemon->evolutionLine = getEvolutions($pokemon->speciesUrl);
 
-}
+ var_dump($pokemon->evolutionLine);
+
+ }
     
 
 
